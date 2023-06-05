@@ -29,7 +29,7 @@ questions_answers <- data.frame(
 )
 
 ui <- navbarPage(
-  "Shiny MRI",
+  "MRI Labeller",
   theme = shinytheme("cyborg"),
   tabPanel(
     "View Mode",
