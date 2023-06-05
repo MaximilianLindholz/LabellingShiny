@@ -119,7 +119,7 @@ server <- function(input, output, session) {
   
   observeEvent(input$save_pair, {
     if (!is.null(input$your_dt_ans) && !is.null(input$question) && !is.null(input$answer)) {
-      image_id <- basename(input$your_dt_ans$datapath)
+      image_id <- basename(input$your_dt_ans$name) # Update this line
       question <- input$question
       answer <- input$answer
       rv$df <- rbind(rv$df, data.frame(ImageID = image_id, 
@@ -128,6 +128,7 @@ server <- function(input, output, session) {
                                        stringsAsFactors = FALSE))
     }
   })
+  
   
   output$download_data <- downloadHandler(
     filename = function() {
