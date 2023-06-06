@@ -2,6 +2,7 @@ library(shiny)
 library(RNifti)
 library(shinythemes)
 library(shinyWidgets)
+library(rsconnect)
 library(markdown)
 source("lazyr.R")
 source("animation.R")
@@ -20,49 +21,73 @@ qa_df <- data.frame(ImageID = character(),
 
 # Predefined questions and answer choices
 questions_answers <- data.frame(
-  question = c("Are there any T2 hyperintense white matter lesions periventricularly?", 
-               "Are there any juxtacortical/cortical T2 hyperintense white matter lesions?", 
-               "Are there any infratentorial T2 hyperintense white matter lesions?"),
-  answers = I(list(c('No', '1-2', '3 or more'), 
-                   c('None', 'Present'),
-                   c('None', 'Present')))
+  question = c(
+    "Is there any abnormal signal intensity in the brain parenchyma?",
+    "Are there any focal lesions present?",
+    "Is there any evidence of brain atrophy?",
+    "Are there any abnormalities in the ventricles?",
+    "Is there any abnormal enhancement after contrast administration?",
+    "Are there any abnormalities in the skull or calvarium?",
+    "Is there any abnormal signal intensity in the meninges?",
+    "Are there any abnormalities in the cranial nerves?",
+    "Is there any evidence of vascular abnormalities or malformations?",
+    "Are there any abnormalities in the pituitary gland?"
+  ),
+  answers = I(list(
+    c('No', 'Yes'),
+    c('None', 'Present'),
+    c('None', 'Mild', 'Moderate', 'Severe'),
+    c('No', 'Yes'),
+    c('No', 'Minimal/mild', 'Marked/avid', 'Not applicable'),
+    c('No', 'Yes'),
+    c('No', 'Present'),
+    c('No', 'Yes'),
+    c('No', 'Yes'),
+    c('No', 'Yes')
+  ))
 )
+
+
 
 ui <- navbarPage(
   "MRI Labeller",
   theme = shinytheme("cyborg"),
   tabPanel(
-    "View Mode",
-    fluidRow(
-      column(4, fileInput("your_dt", "Upload a .nii .nii.gz")),
-      column(1, h2("|"), class = "text-center", 
-             style = "margin-top: -5px; ")
-    ),
-    uiOutput("raster_panel_view")
+    "Answer Mode",
+    sidebarLayout(
+      sidebarPanel(
+        fluidRow(
+          column(12, tags$h4("How to:", style = "color: white; margin-top: 30px;")),
+          column(12, tags$div("The labelling is quite easy, upload an nifti image via the browse button. Then choose a question and answer and click on save. Congrats, now you have done your first labelling. Check the results tab to see the labellings you have done so far. Once you are done with your session you can download the annotations via the download button.                                                                          ", 
+                              style = "color: white; margin-top: 20px;")),
+          tags$br(),
+          tags$br(),
+          column(12, fileInput("your_dt_ans", "Upload a .nii .nii.gz")),
+          column(12, selectInput("question", "Select a question", 
+                                 choices = questions_answers$question)),
+          column(12, selectInput("answer", "Select your answer", 
+                                 choices = NULL)),
+          column(12, actionButton("save_pair", "Save Question-Answer Pair")),
+          column(12, downloadButton("download_data", "Download Q&A Data"))
+        )
+      ),
+      mainPanel(
+        uiOutput("raster_panel_ans")
+      )
+    )
   ),
   tabPanel(
-    "Answer Mode",
+    "Results",
     fluidRow(
-      column(4, fileInput("your_dt_ans", "Upload a .nii .nii.gz")),
-      column(1, h2("|"), class = "text-center", 
-             style = "margin-top: -5px; ")
-    ),
-    fluidRow(
-      column(4, selectInput("question", "Select a question", 
-                            choices = questions_answers$question)),
-      column(4, selectInput("answer", "Select your answer", 
-                            choices = NULL)),
-      column(4, actionButton("save_pair", "Save Question-Answer Pair")),
-      column(4, downloadButton("download_data", "Download Q&A Data")),
       column(12, dataTableOutput("saved_pairs"))
-    ),
-    uiOutput("raster_panel_ans")
+    )
   ),
   tabPanel(
     "About",
     includeMarkdown("about.md")
   )
 )
+
 
 server <- function(input, output, session) {
   options(shiny.maxRequestSize = 500*1024^2)

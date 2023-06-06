@@ -3,9 +3,9 @@ raster3d_animation_UI <- function(id) {
   tagList(
     fluidRow(
       column(4, tagList(
-        actionButton(ns("zoom_m"), "", icon = icon("minus-square-o"), width = "40px", 
+        actionButton(ns("zoom_m"), "", icon = icon("minus"), width = "40px", 
                      style = "border-radius: 25px; padding: 0px;"),
-        actionButton(ns("zoom_p"), "", icon = icon("plus-square-o"), width = "40px", 
+        actionButton(ns("zoom_p"), "", icon = icon("plus"), width = "40px", 
                      style = "border-radius: 25px; padding: 0px;")
       )),
       column(4, offset = 4, uiOutput(ns("time_slider_UI")))
@@ -80,7 +80,7 @@ raster3d_animation_Module <- function(input, output, session, im) {
     sliderInput(
       ns("z_slider"), label = NULL, min = 1, max = dim(im())[3], step = 1,
       value = ceiling(dim(im())[3] / 2), 
-      animate = animationOptions(interval = 100, loop = TRUE)
+      animate = animationOptions(interval = 1000, loop = TRUE)
     )
   })
   

@@ -1,0 +1,11 @@
+name: labellingshiny
+title:
+username:
+account: maximilianlindholz
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9255127
+bundleId: 7311094
+url: https://maximilianlindholz.shinyapps.io/labellingshiny/
+when: 1686055603.21267
+lastSyncTime: 1686055603.21269
