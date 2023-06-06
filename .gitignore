@@ -1,3 +1,5 @@
 
 .DS_Store
-shiny/.Rhistory
+.Rhistory
+.RData
+shiny_server.config.rtf
