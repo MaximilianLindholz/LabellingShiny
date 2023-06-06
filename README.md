@@ -8,4 +8,4 @@ It can be accessed using this link: https://maximilianlindholz.shinyapps.io/labe
 
 
 
-The project is largely adapted from: https://github.com/hebrewseniorlife/shinyMRI-contest
+The project is inspired and adapted from: https://github.com/hebrewseniorlife/shinyMRI-contest
