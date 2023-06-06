@@ -3,3 +3,7 @@
 .Rhistory
 .RData
 shiny_server.config.rtf
+*.gz
+*.nii
+Used/MS/Supplementary Table 1 for patient info .xlsx
+Used/MS/Supplementary Table 2 for  sequence parameters .xlsx

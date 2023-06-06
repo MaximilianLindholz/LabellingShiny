@@ -22,28 +22,38 @@ qa_df <- data.frame(ImageID = character(),
 # Predefined questions and answer choices
 questions_answers <- data.frame(
   question = c(
-    "Is there any abnormal signal intensity in the brain parenchyma?",
+    "Whats the imaging modality?",
+    "Whats the dominant finding?",
     "Are there any focal lesions present?",
     "Is there any evidence of brain atrophy?",
     "Are there any abnormalities in the ventricles?",
-    "Is there any abnormal enhancement after contrast administration?",
-    "Are there any abnormalities in the skull or calvarium?",
-    "Is there any abnormal signal intensity in the meninges?",
-    "Are there any abnormalities in the cranial nerves?",
-    "Is there any evidence of vascular abnormalities or malformations?",
-    "Are there any abnormalities in the pituitary gland?"
+    "Are there any T2 hyperintense white matter lesions periventricularly?", 
+    "Are there any juxtacortical/cortical T2 hyperintense white matter lesions?", 
+    "Are there any infratentorial T2 hyperintense white matter lesions?",
+    "Describe the brain parenchyma:",
+    "Is there any infartction?",
+    "Is there any herniation?",
+    "Is there any mass effect?",
+    "Is there any edema?",
+    "Is there any tumor or tumor residual (e.g. postoperative)?",
+    "Where is the largest component of the tumor?"
   ),
   answers = I(list(
-    c('No', 'Yes'),
+    c('MRI T1', 'MRI T2', 'Flair', 'CT'),
+    c("Normal Brain", "Multiple Sclerosis/Inflammatory", "Tumor/Post-Operative","Tumor/Pre-Operative", "Stroke/Haemorrhage"),
     c('None', 'Present'),
     c('None', 'Mild', 'Moderate', 'Severe'),
-    c('No', 'Yes'),
-    c('No', 'Minimal/mild', 'Marked/avid', 'Not applicable'),
-    c('No', 'Yes'),
-    c('No', 'Present'),
-    c('No', 'Yes'),
-    c('No', 'Yes'),
-    c('No', 'Yes')
+    c('None', 'Present'),
+    c('No', '1-2', '3 or more'), 
+    c('None', 'Present'),
+    c('None', 'Present'),
+    c('Signal intensities are within normal limits for age', 'Mild white matter chronic small vessel ischemic changes', 'Moderate white matter chronic small vessel ischemic changes', 'Severe white matter chronic small vessel ischemic changes'),
+    c('None', 'Present'),
+    c('None', 'Present'),
+    c('None', 'Present'),
+    c('None', 'Present'),
+    c('None', 'Present'),
+    c('There is no tumor', 'Right', 'Center/bilateral', 'Left', 'No Tumor present')
   ))
 )
 
