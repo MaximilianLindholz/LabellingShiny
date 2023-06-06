@@ -3,7 +3,9 @@ This is code that uses Shiny and R to load and display nifti images and enable Q
 Questions and Answers are based on RadLex CDEs (see: https://www.radelement.org) in order to enable "clinically meaningfull" QA Generation.
 It can be accessed using this link: https://maximilianlindholz.shinyapps.io/labellingshiny/
 
-<img width="1182" alt="Bildschirmfoto 2023-06-06 um 09 12 32" src="https://github.com/MaximilianLindholz/LabellingShiny/assets/63144815/81e524ea-da3e-4ad6-a7cd-4b0974924988">
+
+<img width="1053" alt="Bildschirmfoto 2023-06-06 um 11 24 12" src="https://github.com/MaximilianLindholz/LabellingShiny/assets/63144815/3ce11e6d-a691-4695-95a6-4ac946d03e57">
+
 
 
 The project is largely adapted from: https://github.com/hebrewseniorlife/shinyMRI-contest
