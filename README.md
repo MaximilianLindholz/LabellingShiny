@@ -1,4 +1,4 @@
-# LabellingShiny
+# LabellingShiny 🏷️ 🧠
 This is code that uses Shiny and R to load and display nifti images and enable Question Answer Generation and "Annotation" 
 It can be accessed using this link: https://maximilianlindholz.shinyapps.io/labellingshiny/
 
