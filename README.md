@@ -1,6 +1,5 @@
 # LabellingShiny
 This is code that uses Shiny and R to load and display nifti images and enable Question Answer Generation and "Annotation" 
-Questions and Answers are based on RadLex CDEs (see: https://www.radelement.org) in order to enable "clinically meaningfull" QA Generation.
 It can be accessed using this link: https://maximilianlindholz.shinyapps.io/labellingshiny/
 
 
